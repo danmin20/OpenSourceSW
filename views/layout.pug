@@ -1,0 +1,46 @@
+doctype
+html
+  head
+    meta(charset='UTF-8')
+    title= title
+    meta(name='viewport' content='width=device-width, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    link(rel='stylesheet' href='/main.css')
+
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Yeon+Sung&amp;subset=korean')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Song+Myung&amp;subset=korean')
+
+  h1(style='font-family:Song Myung; font-size:50px; text-align:center; padding-top:30px;')
+    a#home.btn(href='/' style='font-size:50px; text-align:center; width:auto') 중고로운 경희나라
+
+  body
+    .container
+      .profile-wrap
+        .profile
+          if user && user.id
+            .user-name= '안녕하세요! ' + user.nick + '님'
+            .user-money= '보유 자산: ' + user.money + '원'
+            input#my-id(type='hidden' value=user.id)
+            a#register.btn(href='/good' style='margin:3px; width:47%;') 상품 등록
+            a#mygood.btn(href='/mygood' style='margin:3px; width:47%;') 내 상품 목록
+            a#list.btn(href='/list' style='margin:3px; width:47%') 낙찰 내역
+            a#change.btn(href='/change' style='margin:3px; width:47%') 내 정보 수정
+            a#logout.btn(href='/auth/logout' style='margin:3px; height:auto; width:25%;font-size: 14px; background:#ffe9a6; color:crimson') 로그아웃
+
+          else
+            form#login-form(action='/auth/login' method='post')
+              .input-group
+                label(for='email' style='font-family:Yeon Sung; font-size:18px; color:black') 이메일
+                input#email(type='email' name='email' style='font-family:Yeon Sung; font-size:15px')
+              .input-group
+                label(for='password' style='font-family:Yeon Sung; font-size:18px; color:black') 비밀번호
+                input#password(type='password' name='password' style='font-family:Yeon Sung; font-size:15px')
+              if loginError
+                .error-message= loginError
+              a#join.btn(href='/join' style='font-family:Yeon Sung; font-size:20px') 회원가입
+              button#login.btn(type='submit' style='font-family:Yeon Sung; font-size:20px') 로그인
+        block good
+      block content
+
+    footer(style='width:auto;height:50px;text-align:center;font-family:Yeon Sung')
+      | Made by 이정민 서예진 김대욱

@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .timeline
+    form#join-form(action='/auth/join' method='post')
+      .input-group
+        label(for='join-email' style='font-size:20px;') 이메일
+        input#join-email(type='email' name='email' required autofocus style='font-family:Yeon Sung; font-size:18px')
+      .input-group
+        label(for='join-nick' style='font-size:20px') 닉네임
+        input#join-nick(type='text' name='nick' style='font-family:Yeon Sung; font-size:18px')
+      .input-group
+        label(for='join-password' style='font-size:20px') 비밀번호
+        input#join-password(type='password' name='password' style='font-family:Yeon Sung; font-size:18px')
+      .input-group
+        label(for='join-money' style='font-size:20px') 보유자산
+        input#join-money(type='number' name='money' style='font-family:Yeon Sung; font-size:18px')
+      if joinError
+        .error-message= joinError
+      button#join-btn.btn(type='submit' style='font-family:Yeon Sung') 회원가입

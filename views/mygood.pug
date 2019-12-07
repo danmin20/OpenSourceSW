@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .timeline
+    h2 내 상품 목록
+    table#mygood-list
+      tr
+        th 상품명
+        th 사진
+        th 등록 날짜
+        th 입장
+      for good in goods
+        tr
+          td= good.name
+          td: img(src='/img/' + good.img)
+          td= (good.createdAt.getMonth()+1)+'월 '+good.createdAt.getDate()+'일 '
+          td: a.enter.btn(href='/good/' + good.id) 입장

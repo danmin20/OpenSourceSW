@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .timeline
+    form#change-form(action='/auth/change' method='post')
+      .input-group
+        input#change-nick(type='hidden' name="email" value=user.email)
+      .input-group
+        label(for='change-nick' style='font-size:20px') 닉네임
+        input#change-nick(type='text' name='nick' value=user.nick style='font-family:Yeon Sung; font-size:18px')
+      .input-group
+        label(for='change-password' style='font-size:20px') 비밀번호
+        input#change-password(type='password' name='password' style='font-family:Yeon Sung; font-size:18px')
+      .input-group
+        label(for='change-money' style='font-size:20px') 보유자산
+        input#change-money(type='number' value=user.money name='money' style='font-family:Yeon Sung; font-size:18px')
+      if joinError
+        .error-message= changeError
+      button#change-btn.btn(type='submit' style='font-family:Yeon Sung') 정보 수정
