@@ -2,7 +2,7 @@ extends layout
 
 block content
   .timeline
-    form#change-form(action='/auth/change' method='post')
+    form#change-form(action='/change' method='post')
       .input-group
         input#change-nick(type='hidden' name="email" value=user.email)
       .input-group
